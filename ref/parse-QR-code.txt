@@ -1,0 +1,1 @@
+otpauth://totp/www.2c-why.com:example%402c-why.com?issuer=www.2c-why.com&secret=HLYP32J745ZB7LNW
