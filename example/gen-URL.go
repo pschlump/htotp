@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"os"
 
-	"git.q8s.co/pschlump/htotp"
+	"github.com/pschlump/htotp"
 )
 
 var Un = flag.String("un", "example@www.2c-why.com", "Username for this user.  Default 'example@www.2c-why.com'.")

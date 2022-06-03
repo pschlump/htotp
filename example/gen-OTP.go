@@ -7,7 +7,7 @@ import (
 	"fmt"
 	"os"
 
-	"git.q8s.co/pschlump/htotp"
+	"github.com/pschlump/htotp"
 )
 
 // take the secret from the command line: not very secure - but this is ....... an example!

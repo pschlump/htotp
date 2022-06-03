@@ -8,7 +8,7 @@ import (
 	"io/ioutil"
 	"os"
 
-	"git.q8s.co/pschlump/htotp"
+	"github.com/pschlump/htotp"
 )
 
 var Fn = flag.String("fn", "", "The image to parse")

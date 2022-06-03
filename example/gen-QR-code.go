@@ -7,7 +7,7 @@ import (
 	"fmt"
 	"os"
 
-	"git.q8s.co/pschlump/htotp"
+	"github.com/pschlump/htotp"
 )
 
 var URI = flag.String("URI", "", "The URI to encode in the image")

@@ -3,7 +3,7 @@ package htotp_test
 import (
 	"testing"
 
-	"git.q8s.co/pschlump/htotp"
+	"github.com/pschlump/htotp"
 )
 
 const secret = "HLYP32J745ZB7LNW"

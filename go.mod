@@ -1,6 +1,6 @@
 module github.com/pschlump/htotp
 
-go 1.17
+go 1.18
 
 require (
 	github.com/makiuchi-d/gozxing v0.1.1
@@ -17,9 +17,3 @@ require (
 	golang.org/x/text v0.3.7 // indirect
 	golang.org/x/xerrors v0.0.0-20200804184101-5ec99f83aff1 // indirect
 )
-
-replace git.q8s.co/pschlump/json5 => ../json5
-
-replace git.q8s.co/pschlump/piserver => ../piserver
-
-replace git.q8s.co/pschlump/dbgo => ../../../git.q8s.co/pschlump/dbgo

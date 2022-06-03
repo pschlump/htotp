@@ -7,7 +7,7 @@ import (
 	"fmt"
 	"os"
 
-	"git.q8s.co/pschlump/htotp"
+	"github.com/pschlump/htotp"
 )
 
 var Length = flag.Int("lenght", 16, "Default length 6 for the secret")

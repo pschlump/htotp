@@ -12,7 +12,7 @@ import (
 	"fmt"
 	"os"
 
-	"git.q8s.co/pschlump/htotp"
+	"github.com/pschlump/htotp"
 )
 
 var OTP = flag.String("otp", "", "The one time password OTP")
