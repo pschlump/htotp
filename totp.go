@@ -7,6 +7,8 @@ import (
 	"github.com/pschlump/dbgo"
 )
 
+// xyzzy100
+
 // time-based OTP, TOTP - uses the counter as a time window.
 type TOTP struct {
 	OTP
@@ -21,7 +23,7 @@ func NewTOTP(secret string, nDigits, timeWindow int, hasher *Hasher) *TOTP {
 
 // xyzzy -test-
 func (tt *TOTP) SetSkew(skew, pskew uint) {
-	if skew > 1 || pskew > 1 {
+	if skew > 1 || pskew > 2 {
 		fmt.Fprintf(os.Stderr, "Warning: unusual skew value, %s.  Normally 0 or 1.  Have skew=%d and pskew=%d\n", dbgo.LF(-2), skew, pskew)
 	}
 	tt.skew = skew
@@ -36,13 +38,16 @@ func NewDefaultTOTP(secret string) *TOTP {
 
 // Generate time OTP of given timestamp
 func (tt *TOTP) At(timestamp int) string {
-	tc := uint(timestamp / tt.timeWindow)    // generate the time window.
-	tr := 60 - uint(timestamp%tt.timeWindow) // generate the time window.
-	if false {
-		fmt.Printf("%s time window tc = %d - mod value = %d %s\n", dbgo.ColorRed, tc, tr, dbgo.ColorReset)
+	tc := uint(timestamp / tt.timeWindow)                   // generate the time window.
+	tr := uint(tt.timeWindow - (timestamp % tt.timeWindow)) // calculate the time remaining
+	if db1 {
+		fmt.Printf("%s time window tc = %d - time remaining = %d %s\n", dbgo.ColorRed, tc, tr, dbgo.ColorReset)
 		fmt.Printf("  Path: %s\n", dbgo.LF(-4))
 	}
 	genotp, err := tt.GenerateOTP(tc) // TOTP for this window
+	if db1 {
+		fmt.Printf("  Generated Value ->%s<- (the OTP)\n", genotp)
+	}
 	if err != nil {
 		return "000000"
 	}
@@ -92,8 +97,12 @@ func (tt *TOTP) Verify(otp string) bool {
 	} else {
 		st, mx = -int(tt.skew), int(tt.skew)
 	}
+	// xyzzy100
 	for ii := st; ii <= mx; ii++ {
-		if otp == tt.At(int(timestamp)+ii) {
+		if db1 {
+			dbgo.Printf(">>>!! new ~~>>>>>>>>> totp: opt=%v == tt.At(%d)=>%(magenta) %v -- data=%+v\n", otp, int(timestamp)+int(ii*tt.timeWindow), tt.At(int(timestamp)+int(ii*tt.timeWindow)), tt)
+		}
+		if otp == tt.At(int(timestamp)+int(ii*tt.timeWindow)) {
 			return true
 		}
 	}
@@ -123,3 +132,5 @@ func (tt TOTP) GetTimeWindow() int {
 
 // xyzzy - get skew
 // CurrentTimeWindow -- xyzzy
+
+var db1 = false
