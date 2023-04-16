@@ -1,10 +1,10 @@
 module github.com/pschlump/htotp
 
-go 1.18
+go 1.19
 
 require (
 	github.com/makiuchi-d/gozxing v0.1.1
-	github.com/pschlump/dbgo v1.0.3
+	github.com/pschlump/dbgo v1.0.6
 	github.com/pschlump/filelib v1.0.6
 )
 
